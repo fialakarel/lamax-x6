@@ -25,10 +25,13 @@ All based on opensource and created for command line use.
 
 copy video lossless, transcode audio to AAC, copy metadata of input video (created date, etc)
 
+2. combine several video files to one (30min + 30min + 24min == 84min)
+
+done using MP4Box
+
 
 ## TODO
 
-2. combine several video files to one (30min + 30min + 24min == 84min)
 3. cut approx 3 sec from the beginning and the end (start and stop procedure)
 4. lens correction, remove fish eye
 5. denoise, increase saturation

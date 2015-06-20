@@ -1,0 +1,9 @@
+ 
+MP4Box pro spojovani mp4 souboru
+sudo apt-get install gpac
+
+ffpmeg to neumi
+
+
+
+bude treba udelat boost zvuku
