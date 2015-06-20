@@ -22,12 +22,10 @@ All based on opensource and created for command line use.
 ## Done
 
 1. convert MOV to MP4 in high quality
-
-copy video lossless, transcode audio to AAC, copy metadata of input video (created date, etc)
+...copy video lossless, transcode audio to AAC, copy metadata of input video (created date, etc)
 
 2. combine several video files to one (30min + 30min + 24min == 84min)
-
-done using MP4Box
+...done using MP4Box
 
 
 ## TODO
