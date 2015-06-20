@@ -22,6 +22,7 @@ All based on opensource and created for command line use.
 ## Done
 
 1. convert MOV to MP4 in high quality
+
 copy video lossless, transcode audio to AAC, copy metadata of input video (created date, etc)
 
 
