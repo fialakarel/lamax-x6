@@ -33,12 +33,18 @@ All based on opensource and created for command line use.
 
    done using method "try and check"
 
+5. denoise, increase saturation, etc
+
+   denoise (poor)
+
+6. stabilization
+
+   done with default values
+
 
 ## TODO
 
 3. cut approx 3 sec from the beginning and the end (start and stop procedure)
-5. denoise, increase saturation
-6. stabilization
 7. use sound equalizer (noise reduction)
 8. convert to expected quality (file size vs quality)
 

@@ -16,6 +16,6 @@ y="0.5"
 cc="0.18"
 ec="0.60"
 
-ffmpeg -i $1 -vf frei0r=lenscorrection:$x:$y:$cc:$ec -strict -2 $1-lc.mp4
+ffmpeg -i $1 -vf frei0r=lenscorrection:$x:$y:$cc:$ec -strict -2 -map_metadata 0 $1-lc.mp4
 
 exit 0

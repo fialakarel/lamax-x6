@@ -7,3 +7,7 @@ ffpmeg to neumi
 
 
 bude treba udelat boost zvuku
+
+mozna vetsinu skriptu pote "sloucit" do jednoho
+
+pridat trochu saturace, kontrastu, snizit svetelnost
