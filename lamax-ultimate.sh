@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# author: Karel Fiala
+# email: fiala.karel@gmail.com
+
 if [[ ! $# -eq 1 ]]
 then
     printf "\n\n\tWrong arguments\n\n"
@@ -14,9 +17,11 @@ y="0.5"
 cc="0.18"
 ec="0.60"
 
-in="ffmpeg -i $1 -threads 4 -vf"
+noise_prof="$( dirname "${BASH_SOURCE[0]}" )/noise.prof"
 
-sound="-c:a aac -ab 160k -ar 44100 -async 1 -strict experimental"
+in="ffmpeg"
+
+sound="-c:a aac -ab 160k -ar 44100 -async 1 -strict experimental -af highpass=f=100,lowpass=f=10000,volume=20dB"
 meta="-map_metadata 0"
 
 out="$meta $sound $1.mp4"
@@ -46,7 +51,26 @@ f_look="mp=eq2=1:1.1:-0.05:1.1:1:1:1"
 
 #$in $f_lens,$f_denoise,$f_look $encode $out
 
-$in $f_lens,$f_denoise,$f_look $encode $meta $sound $1.mp4
+printf "\n[LAMAX-ultimate]\t Extracting audio ...\n"
+
+ffmpeg -i $1 -loglevel error -stats "$1-noise.mp3"
+
+printf "\n[LAMAX-ultimate]\t Denoising audio ...\n"
+# sox pro odsumeni a upravu
+sox "$1-noise.mp3" "$1-denoise.mp3" noisered "$noise_prof" 0.15
+
+printf "\n[LAMAX-ultimate]\t Improving video ...\n"
+
+$in -i "$1-denoise.mp3" -i $1 -loglevel error -stats -threads 4 -vf $f_lens,$f_denoise,$f_look $encode $meta $sound $1.mp4
+
+printf "\n[LAMAX-ultimate]\t Cleaning ...\n"
+
+rm "$1-denoise.mp3"
+rm "$1-noise.mp3"
+
+printf "\n[LAMAX-ultimate]\t Done ...\n"
+
+printf "\n"
 
 # upravit pro stream
 #MP4Box -inter 500 $1.mp4

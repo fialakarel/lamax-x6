@@ -6,8 +6,17 @@ ffpmeg to neumi
 
 
 
-bude treba udelat boost zvuku
-
 mozna vetsinu skriptu pote "sloucit" do jednoho
 
-pridat trochu saturace, kontrastu, snizit svetelnost
+
+
+
+
+zvuk:
+extrahovat do wav
+pres sox a pripraveny profil odecist sum
+pridat do videa a odriznout nektere frekvence?
+
+
+novy sumovy profil
+sumovy profil pod vodou?
