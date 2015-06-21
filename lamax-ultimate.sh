@@ -37,7 +37,10 @@ encode="-f mp4 -c:v libx264 -preset medium -crf 29 -tune fastdecode -movflags fa
 
 f_lens="frei0r=lenscorrection:$x:$y:$cc:$ec"
 f_denoise="hqdn3d=1:1:2:2"
-f_look="mp=eq2=1:1.1:-0.05:1.1:1:1:1"
+f_look="mp=eq2=1:1:0:1.2:0.95:1:1"
+f_deshake="deshake=-1:-1:-1:-1:64:64:1:32:180:0"
+
+# mp=eq2=gamma:contrast:brightness:saturation:rg:gg:bg:weight
 
 # -c copy -acodec aac
 # yadif,\
