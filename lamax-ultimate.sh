@@ -21,7 +21,7 @@ noise_prof="$( dirname "${BASH_SOURCE[0]}" )/noise.prof"
 
 in="ffmpeg"
 
-sound="-c:a aac -ab 160k -ar 44100 -async 1 -strict experimental -af highpass=f=100,lowpass=f=10000,volume=20dB"
+sound="-c:a aac -ab 160k -ar 44100 -async 1 -strict experimental" # -af highpass=f=100,lowpass=f=10000,volume=20dB
 meta="-map_metadata 0"
 
 out="$meta $sound $1.mp4"
@@ -60,8 +60,15 @@ ffmpeg -i $1 -loglevel error -stats "$1-noise.wav"
 
 printf "\n[LAMAX-ultimate]\t Denoising audio ...\n"
 # sox pro odsumeni a upravu
-sox "$1-noise.wav" "$1-denoise.wav" noisered "$noise_prof" 0.25
+sox "$1-noise.wav" "$1-denoise.wav" noisered "$noise_prof" 0.2 \
+  highpass 250 lowpass 4000 \
+  contrast 50 \
+  norm \
+  dither
 
+#   compand .1,.2 −inf,−50.1,−inf,−50,−50 0 −90 .1 \
+#   compand .1,.1 −45.1,−45,−inf,0,−inf 45 −90 .1 \
+  
 printf "\n[LAMAX-ultimate]\t Improving video ...\n"
 
 $in -i "$1-denoise.wav" -i $1 -loglevel error -stats -threads 4 -vf $f_lens,$f_denoise,$f_look $encode $meta $sound $1.mp4
