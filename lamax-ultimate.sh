@@ -56,20 +56,20 @@ f_deshake="deshake=-1:-1:-1:-1:64:64:1:32:180:0"
 
 printf "\n[LAMAX-ultimate]\t Extracting audio ...\n"
 
-ffmpeg -i $1 -loglevel error -stats "$1-noise.mp3"
+ffmpeg -i $1 -loglevel error -stats "$1-noise.wav"
 
 printf "\n[LAMAX-ultimate]\t Denoising audio ...\n"
 # sox pro odsumeni a upravu
-sox "$1-noise.mp3" "$1-denoise.mp3" noisered "$noise_prof" 0.15
+sox "$1-noise.wav" "$1-denoise.wav" noisered "$noise_prof" 0.25
 
 printf "\n[LAMAX-ultimate]\t Improving video ...\n"
 
-$in -i "$1-denoise.mp3" -i $1 -loglevel error -stats -threads 4 -vf $f_lens,$f_denoise,$f_look $encode $meta $sound $1.mp4
+$in -i "$1-denoise.wav" -i $1 -loglevel error -stats -threads 4 -vf $f_lens,$f_denoise,$f_look $encode $meta $sound $1.mp4
 
 printf "\n[LAMAX-ultimate]\t Cleaning ...\n"
 
-rm "$1-denoise.mp3"
-rm "$1-noise.mp3"
+rm "$1-denoise.wav"
+rm "$1-noise.wav"
 
 printf "\n[LAMAX-ultimate]\t Done ...\n"
 
