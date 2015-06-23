@@ -22,7 +22,7 @@ noise_prof="$( dirname "${BASH_SOURCE[0]}" )/noise.prof"
 in="ffmpeg"
 
 sound="-c:a aac -ab 160k -ar 44100 -async 1 -strict experimental" # -af highpass=f=100,lowpass=f=10000,volume=20dB
-meta="-map_metadata 0"
+meta="-map_metadata 1"
 
 out="$meta $sound $1.mp4"
 
