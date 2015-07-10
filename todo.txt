@@ -1,0 +1,2 @@
+- how to solve sound in waterproof case?
+- try to increase CRF?
